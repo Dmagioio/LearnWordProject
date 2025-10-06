@@ -159,19 +159,22 @@
     android:text="@string/button_skip"
     android:textAllCaps="true"
     android:layout_marginBottom="24dp"
-    android:visibility="gone"
+    android:visibility="visible"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent" />
+    app:layout_constraintStart_toStartOf="parent"
+    tools:visibility="visible"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#0EAD69"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_height="136dp">
+        tools:layout_height="136dp"
+        tools:visibility="gone">
 
         <ImageView
             android:id="@+id/imageView"
@@ -210,7 +213,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
