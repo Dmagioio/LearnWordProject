@@ -3,5 +3,6 @@
     <string name="app_name">My Application</string>
     <string name="button_skip">Пропустити</string>
     <string name="title_correct">Правильно!</string>
+    <string name="title_wrong">Неправильно!</string>
     <string name="button_continue">Продовжити</string>
 </resources>
