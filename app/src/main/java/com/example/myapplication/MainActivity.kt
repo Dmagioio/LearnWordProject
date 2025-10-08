@@ -35,6 +35,49 @@ class MainActivity : AppCompatActivity() {
         binding.layoutAnswer1.setOnClickListener {
             markAnswerWrong()
         }
+
+        binding.btnContinue.setOnClickListener {
+            markAnswerNeutral()
+        }
+    }
+
+    private fun MainActivity.markAnswerNeutral() {
+
+        with(binding){
+
+            for (layout in listOf(layoutAnswer1, layoutAnswer3)) {
+                layout.background = ContextCompat.getDrawable(
+                    this@MainActivity,
+                    R.drawable.shape_rounded_containers
+                )
+            }
+
+            for (textView in listOf(tvVariantValue1, tvVariantValue3)) {
+                textView.setTextColor(
+                    ContextCompat.getColor(
+                        this@MainActivity,
+                        R.color.textVariantsColor
+                    )
+                )
+            }
+            for (textView in listOf(tvVariantNumber1, tvVariantNumber3)) {
+                textView.apply {
+                    background = ContextCompat.getDrawable(
+                        this@MainActivity,
+                        R.drawable.shape_rounded_variants,
+                    )
+                    setTextColor(
+                        ContextCompat.getColor(
+                            this@MainActivity,
+                            R.color.textVariantsColor
+                        )
+                    )
+                }
+            }
+
+            layoutResult.isVisible = false
+            btnSkip.isVisible = true
+        }
     }
 
     private fun markAnswerWrong() {
@@ -145,5 +188,3 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
-
-
