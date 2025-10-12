@@ -51,6 +51,16 @@
         app:layout_constraintTop_toBottomOf="@+id/tvText"
         tools:text="number" />
 
+    <TextView
+        android:id="@+id/tvWord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNumber"
+        tools:text="word" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

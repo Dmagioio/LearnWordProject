@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.myapplication.databinding.ActivityFirstDemoBinding
+import java.io.Serializable
 
   class FirstDemoActivity : AppCompatActivity() {
 
@@ -17,11 +18,22 @@ import com.example.myapplication.databinding.ActivityFirstDemoBinding
         binding = ActivityFirstDemoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val word = ExtraWord(
+            "galaxy",
+            "галактика",
+        )
+
         binding.btnOpenSecond.setOnClickListener {
             val intent = Intent(this@FirstDemoActivity, SecondDemoActivity::class.java)
             intent.putExtra("EXTRA_KEY_TEXT", "don't panic")
             intent.putExtra("EXTRA_KEY_NUMBER", 42)
+            intent.putExtra("EXTRA_KEY_WORD", word)
             startActivity(intent)
         }
     }
+      data class ExtraWord(
+          val original: String,
+          val translate: String,
+          val learned: Boolean = false,
+      ) : Serializable
 }
