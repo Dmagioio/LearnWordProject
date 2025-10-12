@@ -6,6 +6,7 @@ import android.os.Parcel
 import android.os.Parcelable
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.myapplication.databinding.ActivityFirstDemoBinding
@@ -27,20 +28,35 @@ import java.io.Serializable
         )
 
         binding.btnOpenSecond.setOnClickListener {
-            val intent = Intent(this@FirstDemoActivity, SecondDemoActivity::class.java)
-            intent.putExtra("EXTRA_KEY_TEXT", "don't panic")
-            intent.putExtra("EXTRA_KEY_NUMBER", 42)
-            intent.putExtra("EXTRA_KEY_WORD", word)
+            val intent = Intent(this@FirstDemoActivity, SecondDemoActivity::class.java).apply {
+                putExtra("EXTRA_KEY_TEXT", "don't panic")
+                putExtra("EXTRA_KEY_NUMBER", 42)
+                putExtra("EXTRA_KEY_WORD", word)
+
+            }
+
+            val bundle = Bundle()
+            bundle.putString("EXTRA_KEY_TEXT", "don't panic")
+            bundle.putInt("EXTRA_KEY_NUMBER", 42)
+            bundle.putSerializable("EXTRA_KEY_WORD", word)
+            intent.putExtras(
+                bundleOf(
+           "EXTRA_KEY_TEXT" to "don't panic",
+                    "EXTRA_KEY_NUMBER" to 42,
+                    "EXTRA_KEY_WORD" to word,
+                )
+            )
+
             startActivity(intent)
         }
     }
 
-      @Parcelize
-      data class ExtraWord(
-          val original: String,
-          val translate: String,
-          val learned: Boolean = false,
-      ) : Parcelable
+//      @Parcelize
+//      data class ExtraWord(
+//          val original: String,
+//          val translate: String,
+//          val learned: Boolean = false,
+//      ) : Parcelable
 
 //      data class ExtraWord(
 //          val original: String,
@@ -74,9 +90,9 @@ import java.io.Serializable
 //          }
 //      }
 
-//      data class ExtraWord(
-//          val original: String,
-//          val translate: String,
-//          val learned: Boolean = false,
-//      ) : Serializable
+      data class ExtraWord(
+          val original: String,
+          val translate: String,
+          val learned: Boolean = false,
+      ) : Serializable
 }
