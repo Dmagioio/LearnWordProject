@@ -27,15 +27,22 @@ class SecondDemoActivity : AppCompatActivity() {
 
                 val text = intent.getStringExtra("EXTRA_KEY_TEXT")
                 val number = intent.getIntExtra("EXTRA_KEY_NUMBER", 0)
-                val word: FirstDemoActivity.ExtraWord = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    intent.getSerializableExtra("EXTRA_KEY_WORD", FirstDemoActivity.ExtraWord::class.java) as FirstDemoActivity.ExtraWord
+
+//                val word: FirstDemoActivity.ExtraWord = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+//                    intent.getSerializableExtra("EXTRA_KEY_WORD", FirstDemoActivity.ExtraWord::class.java) as FirstDemoActivity.ExtraWord
+//                } else {
+//                    intent.getSerializableExtra("EXTRA_KEY_WORD") as FirstDemoActivity.ExtraWord
+//                }
+
+                val word = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    intent.getParcelableExtra("EXTRA_KEY_WORD", FirstDemoActivity.ExtraWord::class.java)
                 } else {
-                    intent.getSerializableExtra("EXTRA_KEY_WORD") as FirstDemoActivity.ExtraWord
+                    intent.getParcelableExtra("EXTRA_KEY_WORD")
                 }
 
                 tvText.text = text
                 tvNumber.text = number.toString()
-                tvWord.text = word.original
+                tvWord.text = word?.original
             }
         }
 }
